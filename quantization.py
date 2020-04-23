@@ -10,8 +10,6 @@ from PIL import Image
 # --------------------------------------------
 # loading & convert to YIQ, Y channel
 imOrig = cv2.imread("image.jpg")
-cv2.imshow("imOrig", imOrig)
-cv2.waitKey()
 imOrig = imOrig.astype('uint8') #for using the the next converting from BGR to RGB
 imOrig = cv2.cvtColor(imOrig, cv2.COLOR_BGR2RGB)
 imOrig = cv2.normalize(imOrig.astype('double'), None, 0.0, 1.0, cv2.NORM_MINMAX)
@@ -23,6 +21,8 @@ imOrig = imyiq[:, :, 0]
 imOrig = cv2.normalize(imOrig, None, 0, 255, cv2.NORM_MINMAX)
 imOrig = np.ceil(imOrig)
 imOrig = imOrig.astype('uint8')
+cv2.imshow("imOrig", imOrig)
+cv2.waitKey()
 
 nQuant = 4
 nIter = 10
